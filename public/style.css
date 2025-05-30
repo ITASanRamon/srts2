@@ -87,7 +87,13 @@ h2 {
   font-weight: 600;
   letter-spacing: 0.5px;
 }
-
+h3 {
+  color: #1976d2;
+  font-size: 1.0em;
+  margin-top: 0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
 .button {
   display: inline-block;
   padding: 12px 30px;
