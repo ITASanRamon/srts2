@@ -155,3 +155,64 @@ footer {
     height: 40px;
   }
 }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f9fb;
+      color: #222;
+    }
+    .section-header {
+      font-size: 2em;
+      color: #2574a9;
+      margin: 40px 0 30px 60px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .school-features {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      gap: 32px;
+      padding: 0 40px 60px 40px;
+      flex-wrap: wrap;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(30,80,160,0.07);
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 28px 18px 22px 18px;
+      text-align: center;
+           margin-bottom: 24px;
+    }
+    .feature-card img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      margin-bottom: 18px;
+      border-radius: 10px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+    }
+    .feature-card .highlight {
+      background: #e3f2fd;
+      color: #1976d2;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 1em;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    @media (max-width: 1000px) {
+      .school-features {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 10px 40px 10px;
+      }
+      .section-header {
+        margin-left: 20px;
+      }
+    }
