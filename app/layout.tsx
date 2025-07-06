@@ -3,7 +3,6 @@ import { Inter, Roboto_Mono } from "next/font/google";
 import "./globals.css"; // This import is used to apply global styles
 
 import { ReactNode } from 'react'   // This import is used to define the type for children in the RootLayout component
-import { cn } from "@/lib/utils"; // This import is used to combine class names conditionally
 
 
 
