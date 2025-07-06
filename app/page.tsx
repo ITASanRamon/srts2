@@ -85,20 +85,27 @@ export default function Home() {
         <section id="schedule">
           <h2 className="text-2xl font-semibold mb-2 text-blue-800">Schedule</h2>
           <div className="overflow-x-auto">
-            <table className="min-w-full border border-gray-300 rounded-lg">
-              <thead className="bg-blue-100">
+            <table className="min-w-full border border-gray-200 rounded-lg shadow-sm">
+              <thead className="bg-gradient-to-r from-blue-100 to-indigo-100">
                 <tr>
-                  <th className="px-4 py-2 border">Week</th>
-                  <th className="px-4 py-2 border">Date</th>
-                  <th className="px-4 py-2 border">Note</th>
+                  <th className="px-6 py-3 border-b text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Week</th>
+                  <th className="px-6 py-3 border-b text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Date</th>
+                  <th className="px-6 py-3 border-b text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Note</th>
                 </tr>
               </thead>
               <tbody>
                 {schedule.map((row, idx) => (
-                  <tr key={idx} className="even:bg-gray-50">
-                    <td className="px-4 py-2 border text-center">{row.week}</td>
-                    <td className="px-4 py-2 border text-center">{row.date}</td>
-                    <td className="px-4 py-2 border">{row.note}</td>
+                  <tr key={idx} className={
+                    (idx % 2 === 0 ? "bg-white" : "bg-gray-50") +
+                    (row.note ? " font-medium" : "")
+                  }>
+                    <td className="px-6 py-3 border-b text-center">{row.week}</td>
+                    <td className="px-6 py-3 border-b text-center">{row.date}</td>
+                    <td className={
+                      "px-6 py-3 border-b" + (row.note ? " text-blue-700" : " text-gray-500")
+                    }>
+                      {row.note || <span className="italic text-gray-400">—</span>}
+                    </td>
                   </tr>
                 ))}
               </tbody>
