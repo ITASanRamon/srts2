@@ -55,7 +55,7 @@ export default function Home() {
         </div>
         <nav className="mt-6">
           <ul className="flex flex-wrap justify-center gap-6 text-lg font-medium">
-            <li><a href="#mission" className="hover:underline">Mission</a></li>
+            <li><a href="#mission" className="hover:underline">TEST</a></li>
             <li><a href="#our-school" className="hover:underline">Our School</a></li>
             <li><a href="#school-registration" className="hover:underline">School Registration</a></li>
             <li><a href="#hscp-registration" className="hover:underline">HSCP Registration</a></li>
