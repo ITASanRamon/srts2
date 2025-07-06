@@ -20,7 +20,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-indigo-50">
       <header className="bg-gradient-to-r from-purple-900 to-blue-700 text-white py-8 px-4 text-center shadow-md">
         <div className="flex flex-col items-center gap-2">
-          <Image src="/ITA_logo.png" alt="San Ramon Tamil School Logo" width={60} height={60} className="rounded-lg shadow" />
+          <Image src="/tamil_school_logo.svg" alt="San Ramon Tamil School Logo" width={80} height={80} className="rounded-lg shadow" />
           <h1 className="text-3xl font-bold tracking-wide">San Ramon Tamil School</h1>
         </div>
         <nav className="mt-6">
