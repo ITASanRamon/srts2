@@ -17,8 +17,9 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
- title: "San Ramon Tamil School",
+  title: "San Ramon Tamil School",
   description: "Official website for San Ramon Tamil School",
+  viewport: "width=device-width, initial-scale=1",
 };
 
 export default function RootLayout({
