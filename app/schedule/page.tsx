@@ -16,14 +16,15 @@ interface ScheduleRow {
   note: string;
 }
 
-interface Semester {
+
+interface Term {
   name: string;
   weeks: ScheduleRow[];
 }
 
-const regularSemesters: Semester[] = [
+const regularTerms: Term[] = [
   {
-    name: "Semester 1",
+    name: "Term 1",
     weeks: [
       { week: 1, date: "2025-08-17", note: "First day of school" },
       { week: 2, date: "2025-08-24", note: "" },
@@ -42,21 +43,26 @@ const regularSemesters: Semester[] = [
       { week: null, date: "2025-11-23", note: "Holiday - Thanksgiving" },
       { week: null, date: "2025-11-30", note: "Holiday - Thanksgiving" },
       { week: 12, date: "2025-12-07", note: "Test 3 - Term 1 ends" },
+    ],
+  },
+  {
+    name: "Term 2",
+    weeks: [
       { week: 13, date: "2025-12-14", note: "Term 2 starts" },
       { week: null, date: "2025-12-21", note: "Holiday - Christmas" },
       { week: null, date: "2025-12-28", note: "Holiday - New year" },
       { week: 14, date: "2026-01-04", note: "" },
       { week: 15, date: "2026-01-11", note: "" },
       { week: 16, date: "2026-01-18", note: "Test 4 - Project 2" },
-    ],
-  },
-  {
-    name: "Semester 2",
-    weeks: [
       { week: 17, date: "2026-01-25", note: "" },
       { week: 18, date: "2026-02-01", note: "" },
       { week: 19, date: "2026-02-08", note: "" },
       { week: 20, date: "2026-02-15", note: "Test 5. Term 2 ends" },
+    ],
+  },
+  {
+    name: "Term 3",
+    weeks: [
       { week: 21, date: "2026-02-22", note: "Term 3 starts" },
       { week: 22, date: "2026-03-01", note: "" },
       { week: 23, date: "2026-03-08", note: "" },
@@ -75,7 +81,7 @@ const regularSemesters: Semester[] = [
   },
 ];
 
-const hscpSemesters: Semester[] = [
+const hscpSemesters = [
   {
     name: "Semester 1",
     weeks: [
@@ -131,15 +137,15 @@ function generateScheduleTable(weeks: ScheduleRow[]): string {
   `;
 }
 
-function generateScheduleSection(title: string, timing: string, semesters: Semester[], color: string): string {
+function generateScheduleSection(title: string, timing: string, items: { name: string, weeks: ScheduleRow[] }[], color: string): string {
   return `
     <section class="schedule-section ${color}">
       <h2>${title}</h2>
       <div class="timing">Timing: <span>${timing}</span></div>
-      ${semesters.map(sem => `
+      ${items.map(item => `
         <div class="semester">
-          <h3>${sem.name}</h3>
-          ${generateScheduleTable(sem.weeks)}
+          <h3>${item.name}</h3>
+          ${generateScheduleTable(item.weeks)}
         </div>
       `).join("")}
     </section>
@@ -181,17 +187,17 @@ function ScheduleTable({ weeks }: { weeks: ScheduleRow[] }) {
   );
 }
 
-function ScheduleSection({ title, timing, semesters, color, id }: { title: string, timing: string, semesters: Semester[], color: string, id?: string }) {
+function ScheduleSection({ title, timing, items, color, id, label }: { title: string, timing: string, items: { name: string, weeks: ScheduleRow[] }[], color: string, id?: string, label?: string }) {
   const sectionColor = color === 'blue' ? 'border-blue-500 bg-blue-50' : 'border-indigo-500 bg-indigo-50';
   return (
     <section id={id} className={`schedule-section mb-8 p-4 rounded-xl border-2 ${sectionColor}`}>
       <div className="timing font-semibold mb-2">
         {title}: <span>{timing}</span>
       </div>
-      {semesters.map((sem) => (
-        <div className="semester mb-6" key={sem.name}>
-          <h3 className="text-lg font-bold text-blue-900 mb-2">{sem.name}</h3>
-          <ScheduleTable weeks={sem.weeks} />
+      {items.map((item) => (
+        <div className="semester mb-6" key={item.name}>
+          <h3 className="text-lg font-bold text-blue-900 mb-2">{label ? label : item.name}</h3>
+          <ScheduleTable weeks={item.weeks} />
         </div>
       ))}
     </section>
@@ -214,16 +220,18 @@ export default function SchedulePage() {
           <ScheduleSection
             title="Regular Classes"
             timing="Sundays, 9:50 AM – 11:30 AM"
-            semesters={regularSemesters}
+            items={regularTerms}
             color="blue"
             id="regular-schedule"
+            label="Term"
           />
           <ScheduleSection
             title="HSCP Classes"
             timing="Sundays, 8:30 AM – 1:00 PM"
-            semesters={hscpSemesters}
+            items={hscpSemesters}
             color="indigo"
             id="hscp-schedule"
+            label="Semester"
           />
         </div>
       </main>
