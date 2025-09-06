@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>School Schedule</title>
+    <style>
+      body { font-family: sans-serif; background: #f8fafc; margin: 0; padding: 0; }
+      .container { max-width: 900px; margin: 2rem auto; background: #fff; border-radius: 1rem; box-shadow: 0 2px 8px #0001; padding: 2rem; }
+      h1 { text-align: center; color: #312e81; }
+      .schedule-section { margin-bottom: 2rem; padding: 1rem; border-radius: 0.75rem; }
+      .schedule-section.blue { border: 2px solid #3b82f6; background: #eff6ff; }
+      .schedule-section.indigo { border: 2px solid #6366f1; background: #eef2ff; }
+      .timing { margin-bottom: 1rem; font-weight: 500; }
+      .timing span { color: #2563eb; }
+      .semester { margin-bottom: 1.5rem; }
+      .semester h3 { color: #1e40af; margin-bottom: 0.5rem; }
+      .schedule-table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+      .schedule-table th, .schedule-table td { border: 1px solid #d1d5db; padding: 0.5rem 1rem; text-align: center; }
+      .schedule-table th { background: #dbeafe; color: #1e293b; }
+      .schedule-table tr:nth-child(even) { background: #f1f5f9; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>School Schedule</h1>
+      <!-- Regular Classes -->
+      <section class="schedule-section blue">
+        <h2>Regular Classes</h2>
+        <div class="timing">Timing: <span>Sundays, 9:50 AM – 11:30 AM</span></div>
+        <div class="semester">
+          <h3>Semester 1</h3>
+          <table class="schedule-table">
+            <thead>
+              <tr><th>Week</th><th>Date</th><th>Note</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>17-Aug-25</td><td>First day of school</td></tr>
+              <tr><td>2</td><td>24-Aug-25</td><td>—</td></tr>
+              <tr><td>—</td><td>31-Aug-25</td><td>Holiday- Labor day</td></tr>
+              <tr><td>3</td><td>07-Sep-25</td><td>—</td></tr>
+              <tr><td>4</td><td>14-Sep-25</td><td>Test 1 - Project</td></tr>
+              <tr><td>—</td><td>21-Sep-25</td><td>Holiday- No Facility available</td></tr>
+              <tr><td>—</td><td>28-Sep-25</td><td>Holiday- No Facility available</td></tr>
+              <tr><td>5</td><td>05-Oct-25</td><td>—</td></tr>
+              <tr><td>6</td><td>12-Oct-25</td><td>—</td></tr>
+              <tr><td>7</td><td>19-Oct-25</td><td>—</td></tr>
+              <tr><td>8</td><td>26-Oct-25</td><td>Test 2</td></tr>
+              <tr><td>9</td><td>02-Nov-25</td><td>—</td></tr>
+              <tr><td>10</td><td>09-Nov-25</td><td>—</td></tr>
+              <tr><td>11</td><td>16-Nov-25</td><td>—</td></tr>
+              <tr><td>—</td><td>23-Nov-25</td><td>Holiday - Thanksgiving</td></tr>
+              <tr><td>—</td><td>30-Nov-25</td><td>Holiday - Thanksgiving</td></tr>
+              <tr><td>12</td><td>07-Dec-25</td><td>Test 3 - Term 1 ends</td></tr>
+              <tr><td>13</td><td>14-Dec-25</td><td>Term 2 starts</td></tr>
+              <tr><td>—</td><td>21-Dec-25</td><td>Holiday - Christmas</td></tr>
+              <tr><td>—</td><td>28-Dec-25</td><td>Holiday - New year</td></tr>
+              <tr><td>14</td><td>04-Jan-26</td><td>—</td></tr>
+              <tr><td>15</td><td>11-Jan-26</td><td>—</td></tr>
+              <tr><td>16</td><td>18-Jan-26</td><td>Test 4 - Project 2</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="semester">
+          <h3>Semester 2</h3>
+          <table class="schedule-table">
+            <thead>
+              <tr><th>Week</th><th>Date</th><th>Note</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>17</td><td>25-Jan-26</td><td>—</td></tr>
+              <tr><td>18</td><td>01-Feb-26</td><td>—</td></tr>
+              <tr><td>19</td><td>08-Feb-26</td><td>—</td></tr>
+              <tr><td>20</td><td>15-Feb-26</td><td>Test 5. Term 2 ends</td></tr>
+              <tr><td>21</td><td>22-Feb-26</td><td>Term 3 starts</td></tr>
+              <tr><td>22</td><td>01-Mar-26</td><td>—</td></tr>
+              <tr><td>23</td><td>08-Mar-26</td><td>—</td></tr>
+              <tr><td>24</td><td>15-Mar-26</td><td>Test 6</td></tr>
+              <tr><td>25</td><td>22-Mar-26</td><td>—</td></tr>
+              <tr><td>26</td><td>29-Mar-26</td><td>—</td></tr>
+              <tr><td>—</td><td>05-Apr-26</td><td>Holiday - Spring break</td></tr>
+              <tr><td>27</td><td>12-Apr-26</td><td>—</td></tr>
+              <tr><td>28</td><td>19-Apr-26</td><td>Test 7</td></tr>
+              <tr><td>29</td><td>26-Apr-26</td><td>—</td></tr>
+              <tr><td>30</td><td>03-May-26</td><td>—</td></tr>
+              <tr><td>31</td><td>10-May-26</td><td>—</td></tr>
+              <tr><td>32</td><td>17-May-26</td><td>Test - Final Exam</td></tr>
+              <tr><td>—</td><td>24-May-26</td><td>Graduation day and Annual day</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <!-- HSCP Classes -->
+      <section class="schedule-section indigo">
+        <h2>HSCP Classes</h2>
+        <div class="timing">Timing: <span>Sundays, 8:30 AM – 1:00 PM</span></div>
+        <div class="semester">
+          <h3>Semester 1</h3>
+          <table class="schedule-table">
+            <thead>
+              <tr><th>Week</th><th>Date</th><th>Note</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>16-Aug-25</td><td>Book distribution</td></tr>
+              <tr><td>2</td><td>17-Aug-25</td><td>First day of school / HSCP Semester 1 begins</td></tr>
+              <tr><td>3</td><td>31-Aug-25</td><td>Holiday / Labor Day</td></tr>
+              <tr><td>4</td><td>14-Sep-25</td><td>Test 1 (Project)</td></tr>
+              <tr><td>5</td><td>21-Sep-25</td><td>Holiday / Facility not available</td></tr>
+              <tr><td>6</td><td>28-Sep-25</td><td>Holiday / Facility not available</td></tr>
+              <tr><td>7</td><td>26-Oct-25</td><td>Test 2</td></tr>
+              <tr><td>8</td><td>23-Nov-25</td><td>Holiday / Thanksgiving</td></tr>
+              <tr><td>9</td><td>30-Nov-25</td><td>Holiday / Thanksgiving</td></tr>
+              <tr><td>10</td><td>07-Dec-25</td><td>Test 3</td></tr>
+              <tr><td>11</td><td>21-Dec-25</td><td>Holiday - Christmas</td></tr>
+              <tr><td>12</td><td>28-Dec-25</td><td>Holiday - New Year</td></tr>
+              <tr><td>13</td><td>18-Jan-26</td><td>Test 4 (Project) / End of Semester 1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="semester">
+          <h3>Semester 2</h3>
+          <table class="schedule-table">
+            <thead>
+              <tr><th>Week</th><th>Date</th><th>Note</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>25-Jan-26</td><td>Semester 2 begins</td></tr>
+              <tr><td>2</td><td>15-Feb-26</td><td>Test 5</td></tr>
+              <tr><td>3</td><td>15-Mar-26</td><td>Test 6</td></tr>
+              <tr><td>4</td><td>05-Apr-26</td><td>Holiday / Spring break</td></tr>
+              <tr><td>5</td><td>19-Apr-26</td><td>Test 7</td></tr>
+              <tr><td>6</td><td>17-May-26</td><td>Final Exam</td></tr>
+              <tr><td>7</td><td>24-May-26</td><td>Graduation Day / Annual Day</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
