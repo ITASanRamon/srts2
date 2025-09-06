@@ -50,6 +50,14 @@ export default function SchedulePage() {
       <Header />
       <main className="max-w-3xl mx-auto p-6">
         <h1 className="text-2xl font-bold mb-4">School Schedule</h1>
+        <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded">
+          <div className="mb-2">
+            <span className="font-semibold">Regular Classes:</span> Sundays, 10:00 AM – 12:00 PM
+          </div>
+          <div>
+            <span className="font-semibold">HSCP Classes:</span> Sundays, 8:30 AM – 1:00 PM
+          </div>
+        </div>
         <div className="overflow-x-auto">
           <table className="min-w-full border border-gray-200 rounded-lg shadow-sm">
             <thead className="bg-gradient-to-r from-blue-100 to-indigo-100">
