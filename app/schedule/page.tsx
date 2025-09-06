@@ -180,3 +180,14 @@ export function renderSchedulePage(): string {
 }
 
 // To use: import { renderSchedulePage } from './page'; then write the output to an .html file or serve it as needed.
+
+export default function SchedulePage() {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-indigo-50">
+      <h1 className="text-2xl font-bold text-indigo-900 mb-4">Schedule Page</h1>
+      <p className="text-gray-700">The schedule is now available as a static HTML file.<br />
+        <a href="/schedule/schedule.html" className="text-blue-700 underline">View the full schedule here</a>.
+      </p>
+    </div>
+  );
+}
