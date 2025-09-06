@@ -11,7 +11,7 @@ export default function Header() {
       <nav className="mt-6">
         <ul className="flex flex-wrap justify-center gap-6 text-lg font-medium">
           <li><Link href="/">Home</Link></li>
-          <li><a href="/schedule/schedule.html">Schedule</a></li>
+          <li><Link href="/schedule">Schedule</Link></li>
           <li><Link href="/teachers">Teachers</Link></li>
           <li><Link href="/officers">Officers</Link></li>
           <li><Link href="/volunteers">Volunteers</Link></li>

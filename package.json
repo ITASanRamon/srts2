@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "San Ramon Tamil School website (Next.js)",
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.11",
     "autoprefixer": "^10.4.21",
+    "express": "^5.1.0",
     "next": "15.4.0-canary.115",
     "postcss": "^8.5.6",
     "react": "^18.2.0",

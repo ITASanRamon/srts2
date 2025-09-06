@@ -2,7 +2,7 @@
 import Header from "./components/Header";
 import Image from "next/image";
 
-export default function HomePage() {
+export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-indigo-50">
       <Header />
