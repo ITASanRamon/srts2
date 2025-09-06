@@ -189,24 +189,29 @@ function ScheduleSection({ title, timing, semesters, color }: { title: string, t
   );
 }
 
+import Header from "../components/Header";
+
 export default function SchedulePage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-indigo-50 py-8">
-      <div className="container max-w-3xl mx-auto bg-white rounded-xl shadow-md p-8">
-        <h1 className="text-3xl font-bold text-indigo-900 mb-6 text-center">School Schedule</h1>
-        <ScheduleSection
-          title="Regular Classes"
-          timing="Sundays, 9:50 AM – 11:30 AM"
-          semesters={regularSemesters}
-          color="blue"
-        />
-        <ScheduleSection
-          title="HSCP Classes"
-          timing="Sundays, 8:30 AM – 1:00 PM"
-          semesters={hscpSemesters}
-          color="indigo"
-        />
-      </div>
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-indigo-50">
+      <Header />
+      <main className="flex-1 flex flex-col items-center justify-center py-8">
+        <div className="container max-w-3xl mx-auto bg-white rounded-xl shadow-md p-8">
+          <h1 className="text-3xl font-bold text-indigo-900 mb-6 text-center">School Schedule</h1>
+          <ScheduleSection
+            title="Regular Classes"
+            timing="Sundays, 9:50 AM – 11:30 AM"
+            semesters={regularSemesters}
+            color="blue"
+          />
+          <ScheduleSection
+            title="HSCP Classes"
+            timing="Sundays, 8:30 AM – 1:00 PM"
+            semesters={hscpSemesters}
+            color="indigo"
+          />
+        </div>
+      </main>
     </div>
   );
 }
