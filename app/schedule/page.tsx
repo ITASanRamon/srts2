@@ -1,5 +1,4 @@
 import Header from "../components/Header";
-import { useState } from "react";
 
 function formatDate(dateStr) {
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -98,23 +97,6 @@ const hscpSemesters = [
   },
 ];
 
-function CollapsibleSection({ title, children, defaultOpen = false }) {
-  const [open, setOpen] = useState(defaultOpen);
-  return (
-    <div className="mb-4 border rounded-lg bg-white/80 shadow">
-      <button
-        className="w-full flex justify-between items-center px-4 py-3 text-lg font-semibold text-left text-blue-900 hover:bg-blue-50 focus:outline-none"
-        onClick={() => setOpen((o) => !o)}
-        aria-expanded={open}
-      >
-        <span>{title}</span>
-        <span className="ml-2">{open ? "▲" : "▼"}</span>
-      </button>
-      {open && <div className="px-4 pb-4">{children}</div>}
-    </div>
-  );
-}
-
 function ScheduleTable({ weeks }) {
   return (
     <div className="overflow-x-auto">
@@ -154,10 +136,11 @@ export default function SchedulePage() {
               Regular Classes
             </h2>
             <div className="mb-4 text-base text-gray-700 font-medium">Timing: <span className="text-blue-700">Sundays, 9:50 AM – 11:30 AM</span></div>
-            {regularSemesters.map((sem, i) => (
-              <CollapsibleSection key={sem.name} title={sem.name} defaultOpen={i === 0}>
+            {regularSemesters.map((sem) => (
+              <div key={sem.name} className="mb-6">
+                <h3 className="text-lg font-semibold mb-2 text-blue-700">{sem.name}</h3>
                 <ScheduleTable weeks={sem.weeks} />
-              </CollapsibleSection>
+              </div>
             ))}
           </div>
         </section>
@@ -169,10 +152,11 @@ export default function SchedulePage() {
               HSCP Classes
             </h2>
             <div className="mb-4 text-base text-gray-700 font-medium">Timing: <span className="text-indigo-700">Sundays, 8:30 AM – 1:00 PM</span></div>
-            {hscpSemesters.map((sem, i) => (
-              <CollapsibleSection key={sem.name} title={sem.name} defaultOpen={i === 0}>
+            {hscpSemesters.map((sem) => (
+              <div key={sem.name} className="mb-6">
+                <h3 className="text-lg font-semibold mb-2 text-indigo-700">{sem.name}</h3>
                 <ScheduleTable weeks={sem.weeks} />
-              </CollapsibleSection>
+              </div>
             ))}
             <div className="mb-2 font-semibold text-indigo-900 mt-4">Semester Summary:</div>
             <ul className="list-disc ml-6 text-sm mb-2 text-indigo-800">
