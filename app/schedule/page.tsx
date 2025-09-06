@@ -1,16 +1,27 @@
-import Header from "../components/Header";
+// Schedule data and HTML generation for a static TypeScript project
 
-function formatDate(dateStr) {
+function formatDate(dateStr: string): string {
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const d = new Date(dateStr);
-  if (isNaN(d)) return dateStr; // fallback for non-ISO dates
+  if (isNaN(d as any)) return dateStr;
   const day = d.getDate().toString().padStart(2, "0");
   const mon = months[d.getMonth()];
   const yr = d.getFullYear().toString().slice(-2);
   return `${day}-${mon}-${yr}`;
 }
 
-const regularSemesters = [
+interface ScheduleRow {
+  week: number | null;
+  date: string;
+  note: string;
+}
+
+interface Semester {
+  name: string;
+  weeks: ScheduleRow[];
+}
+
+const regularSemesters: Semester[] = [
   {
     name: "Semester 1",
     weeks: [
@@ -64,7 +75,7 @@ const regularSemesters = [
   },
 ];
 
-const hscpSemesters = [
+const hscpSemesters: Semester[] = [
   {
     name: "Semester 1",
     weeks: [
@@ -97,78 +108,75 @@ const hscpSemesters = [
   },
 ];
 
-function ScheduleTable({ weeks }) {
-  return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full border border-gray-200 rounded-lg shadow-sm bg-white">
-        <thead className="bg-gradient-to-r from-blue-100 to-indigo-100">
+function generateScheduleTable(weeks: ScheduleRow[]): string {
+  return `
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Week</th>
+          <th>Date</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${weeks.map(row => `
           <tr>
-            <th className="px-4 py-2 border-b text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Week</th>
-            <th className="px-4 py-2 border-b text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Date</th>
-            <th className="px-4 py-2 border-b text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Note</th>
+            <td>${row.week !== null ? row.week : "—"}</td>
+            <td>${formatDate(row.date)}</td>
+            <td>${row.note || "—"}</td>
           </tr>
-        </thead>
-        <tbody>
-          {weeks.map((row, idx) => (
-            <tr key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-blue-50/60"}>
-              <td className="px-4 py-2 border-b text-center">{row.week !== null ? row.week : "—"}</td>
-              <td className="px-4 py-2 border-b text-center">{formatDate(row.date)}</td>
-              <td className={"px-4 py-2 border-b" + (row.note ? " text-blue-700" : " text-gray-500")}>{row.note || <span className="italic text-gray-400">—</span>}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+        `).join("")}
+      </tbody>
+    </table>
+  `;
 }
 
-export default function SchedulePage() {
-  return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-indigo-50">
-      <Header />
-      <main className="max-w-3xl mx-auto p-6">
-        <h1 className="text-3xl font-extrabold mb-10 text-center text-indigo-900 tracking-tight">School Schedule</h1>
-        {/* Regular Classes Section */}
-        <section className="mb-12">
-          <div className="rounded-xl shadow-lg bg-white/80 border border-blue-200 p-6 mb-4">
-            <h2 className="text-2xl font-bold mb-2 text-blue-800 flex items-center gap-2">
-              <span className="inline-block w-2 h-6 bg-blue-400 rounded-sm"></span>
-              Regular Classes
-            </h2>
-            <div className="mb-4 text-base text-gray-700 font-medium">Timing: <span className="text-blue-700">Sundays, 9:50 AM – 11:30 AM</span></div>
-            {regularSemesters.map((sem) => (
-              <div key={sem.name} className="mb-6">
-                <h3 className="text-lg font-semibold mb-2 text-blue-700">{sem.name}</h3>
-                <ScheduleTable weeks={sem.weeks} />
-              </div>
-            ))}
-          </div>
-        </section>
-        {/* HSCP Classes Section */}
-        <section>
-          <div className="rounded-xl shadow-lg bg-white/80 border border-indigo-200 p-6 mb-4">
-            <h2 className="text-2xl font-bold mb-2 text-indigo-800 flex items-center gap-2">
-              <span className="inline-block w-2 h-6 bg-indigo-400 rounded-sm"></span>
-              HSCP Classes
-            </h2>
-            <div className="mb-4 text-base text-gray-700 font-medium">Timing: <span className="text-indigo-700">Sundays, 8:30 AM – 1:00 PM</span></div>
-            {hscpSemesters.map((sem) => (
-              <div key={sem.name} className="mb-6">
-                <h3 className="text-lg font-semibold mb-2 text-indigo-700">{sem.name}</h3>
-                <ScheduleTable weeks={sem.weeks} />
-              </div>
-            ))}
-            <div className="mb-2 font-semibold text-indigo-900 mt-4">Semester Summary:</div>
-            <ul className="list-disc ml-6 text-sm mb-2 text-indigo-800">
-              <li>Semester 1: Aug 17 2025 to Jan 18th 2025 - 16 classes</li>
-              <li>Semester 2: Jan 25th 2025 to May 17th 2025 - 16 classes</li>
-              <li>Working Days: 32 (includes project & reviews)</li>
-              <li>Holidays: 8</li>
-              <li>Projects & Reviews: 8</li>
-            </ul>
-          </div>
-        </section>
-      </main>
-    </div>
-  );
+function generateScheduleSection(title: string, timing: string, semesters: Semester[], color: string): string {
+  return `
+    <section class="schedule-section ${color}">
+      <h2>${title}</h2>
+      <div class="timing">Timing: <span>${timing}</span></div>
+      ${semesters.map(sem => `
+        <div class="semester">
+          <h3>${sem.name}</h3>
+          ${generateScheduleTable(sem.weeks)}
+        </div>
+      `).join("")}
+    </section>
+  `;
 }
+
+export function renderSchedulePage(): string {
+  return `
+    <html>
+      <head>
+        <title>School Schedule</title>
+        <style>
+          body { font-family: sans-serif; background: #f8fafc; margin: 0; padding: 0; }
+          .container { max-width: 900px; margin: 2rem auto; background: #fff; border-radius: 1rem; box-shadow: 0 2px 8px #0001; padding: 2rem; }
+          h1 { text-align: center; color: #312e81; }
+          .schedule-section { margin-bottom: 2rem; padding: 1rem; border-radius: 0.75rem; }
+          .schedule-section.blue { border: 2px solid #3b82f6; background: #eff6ff; }
+          .schedule-section.indigo { border: 2px solid #6366f1; background: #eef2ff; }
+          .timing { margin-bottom: 1rem; font-weight: 500; }
+          .timing span { color: #2563eb; }
+          .semester { margin-bottom: 1.5rem; }
+          .semester h3 { color: #1e40af; margin-bottom: 0.5rem; }
+          .schedule-table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+          .schedule-table th, .schedule-table td { border: 1px solid #d1d5db; padding: 0.5rem 1rem; text-align: center; }
+          .schedule-table th { background: #dbeafe; color: #1e293b; }
+          .schedule-table tr:nth-child(even) { background: #f1f5f9; }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <h1>School Schedule</h1>
+          ${generateScheduleSection("Regular Classes", "Sundays, 9:50 AM – 11:30 AM", regularSemesters, "blue")}
+          ${generateScheduleSection("HSCP Classes", "Sundays, 8:30 AM – 1:00 PM", hscpSemesters, "indigo")}
+        </div>
+      </body>
+    </html>
+  `;
+}
+
+// To use: import { renderSchedulePage } from './page'; then write the output to an .html file or serve it as needed.
