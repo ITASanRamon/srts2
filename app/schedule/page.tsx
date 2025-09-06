@@ -220,18 +220,16 @@ export default function SchedulePage() {
           <ScheduleSection
             title="Regular Classes"
             timing="Sundays, 9:50 AM – 11:30 AM"
-            items={regularTerms}
+            items={regularTerms.map((t, i) => ({ ...t, name: `Term ${i + 1}` }))}
             color="blue"
             id="regular-schedule"
-            label="Term"
           />
           <ScheduleSection
             title="HSCP Classes"
             timing="Sundays, 8:30 AM – 1:00 PM"
-            items={hscpSemesters}
+            items={hscpSemesters.map((s, i) => ({ ...s, name: `Semester ${i + 1}` }))}
             color="indigo"
             id="hscp-schedule"
-            label="Semester"
           />
         </div>
       </main>
