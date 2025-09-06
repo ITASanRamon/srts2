@@ -72,59 +72,79 @@ export default function SchedulePage() {
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-indigo-50">
       <Header />
       <main className="max-w-3xl mx-auto p-6">
-        <h1 className="text-2xl font-bold mb-8">School Schedule</h1>
+        <h1 className="text-3xl font-extrabold mb-10 text-center text-indigo-900 tracking-tight">School Schedule</h1>
         {/* Regular Classes Section */}
         <section className="mb-12">
-          <h2 className="text-xl font-semibold mb-2 text-blue-800">Regular Classes</h2>
-          <div className="mb-4 text-sm text-gray-700">Timing: Sundays, 9:50 AM – 11:30 AM</div>
-          <div className="overflow-x-auto">
-            <table className="min-w-full border border-gray-200 rounded-lg shadow-sm">
-              <thead className="bg-gradient-to-r from-blue-100 to-indigo-100">
-                <tr>
-                  <th className="px-6 py-3 border-b text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Week</th>
-                  <th className="px-6 py-3 border-b text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Date</th>
-                  <th className="px-6 py-3 border-b text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Note</th>
-                </tr>
-              </thead>
-              <tbody>
-                {regularSchedule.map((row, idx) => (
-                  <tr key={idx} className={
-                    (idx % 2 === 0 ? "bg-white" : "bg-gray-50") +
-                    (row.note ? " font-medium" : "")
-                  }>
-                    <td className="px-6 py-3 border-b text-center">{row.week !== null ? row.week : "—"}</td>
-                    <td className="px-6 py-3 border-b text-center">{row.date}</td>
-                    <td className={
-                      "px-6 py-3 border-b" + (row.note ? " text-blue-700" : " text-gray-500")
-                    }>
-                      {row.note || <span className="italic text-gray-400">—</span>}
-                    </td>
+          <div className="rounded-xl shadow-lg bg-white/80 border border-blue-200 p-6 mb-4">
+            <h2 className="text-2xl font-bold mb-2 text-blue-800 flex items-center gap-2">
+              <span className="inline-block w-2 h-6 bg-blue-400 rounded-sm"></span>
+              Regular Classes
+            </h2>
+            <div className="mb-4 text-base text-gray-700 font-medium">Timing: <span className="text-blue-700">Sundays, 9:50 AM – 11:30 AM</span></div>
+            <div className="overflow-x-auto">
+              <table className="min-w-full border border-gray-200 rounded-lg shadow-sm bg-white">
+                <thead className="bg-gradient-to-r from-blue-100 to-indigo-100">
+                  <tr>
+                    <th className="px-6 py-3 border-b text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Week</th>
+                    <th className="px-6 py-3 border-b text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Date</th>
+                    <th className="px-6 py-3 border-b text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Note</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {regularSchedule.map((row, idx) => (
+                    <tr key={idx} className={
+                      (idx % 2 === 0 ? "bg-white" : "bg-blue-50/60") +
+                      (row.note ? " font-medium" : "")
+                    }>
+                      <td className="px-6 py-3 border-b text-center">{row.week !== null ? row.week : "—"}</td>
+                      <td className="px-6 py-3 border-b text-center">{row.date}</td>
+                      <td className={
+                        "px-6 py-3 border-b" + (row.note ? " text-blue-700" : " text-gray-500")
+                      }>
+                        {row.note || <span className="italic text-gray-400">—</span>}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
         {/* HSCP Classes Section */}
         <section>
-          <h2 className="text-xl font-semibold mb-2 text-indigo-800">HSCP Classes</h2>
-          <div className="mb-4 text-sm text-gray-700">Timing: Sundays, 8:30 AM – 1:00 PM</div>
-          <div className="mb-4">
-            <h3 className="font-semibold mb-1">Calendar</h3>
-            <ul className="list-disc ml-6 text-sm">
-              {hscpCalendar.map((item, idx) => (
-                <li key={idx}><span className="font-medium">{item.date}:</span> {item.event}</li>
-              ))}
+          <div className="rounded-xl shadow-lg bg-white/80 border border-indigo-200 p-6 mb-4">
+            <h2 className="text-2xl font-bold mb-2 text-indigo-800 flex items-center gap-2">
+              <span className="inline-block w-2 h-6 bg-indigo-400 rounded-sm"></span>
+              HSCP Classes
+            </h2>
+            <div className="mb-4 text-base text-gray-700 font-medium">Timing: <span className="text-indigo-700">Sundays, 8:30 AM – 1:00 PM</span></div>
+            <div className="overflow-x-auto mb-4">
+              <table className="min-w-full border border-gray-200 rounded-lg shadow-sm bg-white">
+                <thead className="bg-gradient-to-r from-indigo-100 to-blue-100">
+                  <tr>
+                    <th className="px-6 py-3 border-b text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Date</th>
+                    <th className="px-6 py-3 border-b text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Event</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {hscpCalendar.map((item, idx) => (
+                    <tr key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-indigo-50/60"}>
+                      <td className="px-6 py-3 border-b text-center font-medium">{item.date}</td>
+                      <td className="px-6 py-3 border-b text-gray-700">{item.event}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="mb-2 font-semibold text-indigo-900">Semester Dates:</div>
+            <ul className="list-disc ml-6 text-sm mb-2 text-indigo-800">
+              <li>Semester 1: Aug 17 2025 to Jan 18th 2025 - 16 classes</li>
+              <li>Semester 2: Jan 25th 2025 to May 17th 2025 - 16 classes</li>
+              <li>Working Days: 32 (includes project & reviews)</li>
+              <li>Holidays: 8</li>
+              <li>Projects & Reviews: 8</li>
             </ul>
           </div>
-          <div className="mb-2 font-semibold">Semester Dates:</div>
-          <ul className="list-disc ml-6 text-sm mb-4">
-            <li>Semester 1: Aug 17 2025 to Jan 18th 2025 - 16 classes</li>
-            <li>Semester 2: Jan 25th 2025 to May 17th 2025 - 16 classes</li>
-            <li>Working Days: 32 (includes project & reviews)</li>
-            <li>Holidays: 8</li>
-            <li>Projects & Reviews: 8</li>
-          </ul>
         </section>
       </main>
     </div>
