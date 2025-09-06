@@ -151,31 +151,40 @@ function generateScheduleSection(title: string, timing: string, semesters: Semes
 
 function ScheduleTable({ weeks }: { weeks: ScheduleRow[] }) {
   return (
-    <table className="schedule-table w-full border-collapse mb-4">
-      <thead>
-        <tr>
-          <th className="bg-blue-100 text-slate-800">Week</th>
-          <th className="bg-blue-100 text-slate-800">Date</th>
-          <th className="bg-blue-100 text-slate-800">Note</th>
-        </tr>
-      </thead>
-      <tbody>
-        {weeks.map((row, idx) => (
-          <tr key={idx} className={idx % 2 === 0 ? 'bg-slate-50' : 'bg-white'}>
-            <td>{row.week ?? ''}</td>
-            <td>{formatDate(row.date)}</td>
-            <td>{row.note}</td>
+    <div className="overflow-x-auto rounded-lg shadow-md mb-4">
+      <table className="min-w-full text-sm text-left text-gray-700 bg-white">
+        <thead>
+          <tr>
+            <th className="px-4 py-3 bg-gradient-to-r from-blue-200 to-blue-400 text-blue-900 font-bold uppercase tracking-wider rounded-tl-lg">Week</th>
+            <th className="px-4 py-3 bg-gradient-to-r from-blue-200 to-blue-400 text-blue-900 font-bold uppercase tracking-wider">Date</th>
+            <th className="px-4 py-3 bg-gradient-to-r from-blue-200 to-blue-400 text-blue-900 font-bold uppercase tracking-wider rounded-tr-lg">Note</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {weeks.map((row, idx) => (
+            <tr
+              key={idx}
+              className={
+                idx % 2 === 0
+                  ? "bg-gradient-to-r from-slate-50 to-blue-50 hover:bg-blue-100 transition"
+                  : "bg-white hover:bg-blue-50 transition"
+              }
+            >
+              <td className="px-4 py-2 font-semibold text-center border-b border-gray-200">{row.week ?? ''}</td>
+              <td className="px-4 py-2 text-center border-b border-gray-200">{formatDate(row.date)}</td>
+              <td className="px-4 py-2 border-b border-gray-200">{row.note || <span className="text-gray-400 italic">—</span>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
-function ScheduleSection({ title, timing, semesters, color }: { title: string, timing: string, semesters: Semester[], color: string }) {
+function ScheduleSection({ title, timing, semesters, color, id }: { title: string, timing: string, semesters: Semester[], color: string, id?: string }) {
   const sectionColor = color === 'blue' ? 'border-blue-500 bg-blue-50' : 'border-indigo-500 bg-indigo-50';
   return (
-    <section className={`schedule-section mb-8 p-4 rounded-xl border-2 ${sectionColor}`}>
+    <section id={id} className={`schedule-section mb-8 p-4 rounded-xl border-2 ${sectionColor}`}>
       <div className="timing font-semibold mb-2">
         {title}: <span>{timing}</span>
       </div>
@@ -198,17 +207,23 @@ export default function SchedulePage() {
       <main className="flex-1 flex flex-col items-center justify-center py-8">
         <div className="container max-w-3xl mx-auto bg-white rounded-xl shadow-md p-8">
           <h1 className="text-3xl font-bold text-indigo-900 mb-6 text-center">School Schedule</h1>
+          <div className="flex justify-center gap-6 mb-8">
+            <a href="#regular-schedule" className="text-blue-700 underline font-semibold hover:text-blue-900">Regular Schedule</a>
+            <a href="#hscp-schedule" className="text-indigo-700 underline font-semibold hover:text-indigo-900">HSCP Schedule</a>
+          </div>
           <ScheduleSection
             title="Regular Classes"
             timing="Sundays, 9:50 AM – 11:30 AM"
             semesters={regularSemesters}
             color="blue"
+            id="regular-schedule"
           />
           <ScheduleSection
             title="HSCP Classes"
             timing="Sundays, 8:30 AM – 1:00 PM"
             semesters={hscpSemesters}
             color="indigo"
+            id="hscp-schedule"
           />
         </div>
       </main>
