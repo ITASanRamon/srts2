@@ -52,11 +52,48 @@ export default function SchedulePage() {
         <h1 className="text-2xl font-bold mb-4">School Schedule</h1>
         <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded">
           <div className="mb-2">
-            <span className="font-semibold">Regular Classes:</span> Sundays, 10:00 AM – 12:00 PM
+            <span className="font-semibold">Regular Classes:</span> Sundays, 9:50 AM – 11:30 AM
           </div>
           <div>
             <span className="font-semibold">HSCP Classes:</span> Sundays, 8:30 AM – 1:00 PM
           </div>
+        </div>
+        <div className="mb-8">
+          <h2 className="text-xl font-semibold mb-2 text-indigo-700">HSCP Calendar</h2>
+          <div className="mb-2 font-semibold">Semester 1:</div>
+          <ul className="list-disc ml-6 mb-4 text-sm">
+            <li>Aug 16th: Book distribution</li>
+            <li>Aug 17th: First day of school / HSCP Semester 1 begins</li>
+            <li>Aug 31st: Holiday / Labor Day</li>
+            <li>Sept 14th: Test 1 (Project)</li>
+            <li>Sept 21st: Holiday / Facility not available</li>
+            <li>Sept 28th: Holiday / Facility not available</li>
+            <li>Oct 26th: Test 2</li>
+            <li>Nov 23rd: Holiday / Thanksgiving</li>
+            <li>Nov 30th: Holiday / Thanksgiving</li>
+            <li>Dec 7th: Test 3</li>
+            <li>Dec 21st: Holiday - Christmas</li>
+            <li>Dec 28th: Holiday - New Year</li>
+            <li>Jan 18th: Test 4 (Project) / End of Semester 1</li>
+          </ul>
+          <div className="mb-2 font-semibold">Semester 2:</div>
+          <ul className="list-disc ml-6 mb-4 text-sm">
+            <li>Jan 25th: Semester 2 begins</li>
+            <li>Feb 15th: Test 5</li>
+            <li>Mar 15th: Test 6</li>
+            <li>Apr 5th: Holiday / Spring break</li>
+            <li>Apr 19th: Test 7</li>
+            <li>May 17th: Final Exam</li>
+            <li>May 24th: Graduation Day / Annual Day</li>
+          </ul>
+          <div className="mb-2 font-semibold">Semester Dates:</div>
+          <ul className="list-disc ml-6 text-sm">
+            <li>Semester 1: Aug 17 2025 to Jan 18th 2025 - 16 classes</li>
+            <li>Semester 2: Jan 25th 2025 to May 17th 2025 - 16 classes</li>
+            <li>Working Days: 32 (includes project & reviews)</li>
+            <li>Holidays: 8</li>
+            <li>Projects & Reviews: 8</li>
+          </ul>
         </div>
         <div className="overflow-x-auto">
           <table className="min-w-full border border-gray-200 rounded-lg shadow-sm">
