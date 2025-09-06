@@ -146,38 +146,6 @@ function generateScheduleSection(title: string, timing: string, semesters: Semes
   `;
 }
 
-export function renderSchedulePage(): string {
-  return `
-    <html>
-      <head>
-        <title>School Schedule</title>
-        <style>
-          body { font-family: sans-serif; background: #f8fafc; margin: 0; padding: 0; }
-          .container { max-width: 900px; margin: 2rem auto; background: #fff; border-radius: 1rem; box-shadow: 0 2px 8px #0001; padding: 2rem; }
-          h1 { text-align: center; color: #312e81; }
-          .schedule-section { margin-bottom: 2rem; padding: 1rem; border-radius: 0.75rem; }
-          .schedule-section.blue { border: 2px solid #3b82f6; background: #eff6ff; }
-          .schedule-section.indigo { border: 2px solid #6366f1; background: #eef2ff; }
-          .timing { margin-bottom: 1rem; font-weight: 500; }
-          .timing span { color: #2563eb; }
-          .semester { margin-bottom: 1.5rem; }
-          .semester h3 { color: #1e40af; margin-bottom: 0.5rem; }
-          .schedule-table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
-          .schedule-table th, .schedule-table td { border: 1px solid #d1d5db; padding: 0.5rem 1rem; text-align: center; }
-          .schedule-table th { background: #dbeafe; color: #1e293b; }
-          .schedule-table tr:nth-child(even) { background: #f1f5f9; }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <h1>School Schedule</h1>
-          ${generateScheduleSection("Regular Classes", "Sundays, 9:50 AM – 11:30 AM", regularSemesters, "blue")}
-          ${generateScheduleSection("HSCP Classes", "Sundays, 8:30 AM – 1:00 PM", hscpSemesters, "indigo")}
-        </div>
-      </body>
-    </html>
-  `;
-}
 
 // To use: import { renderSchedulePage } from './page'; then write the output to an .html file or serve it as needed.
 
