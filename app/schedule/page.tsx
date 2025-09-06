@@ -149,13 +149,64 @@ function generateScheduleSection(title: string, timing: string, semesters: Semes
 
 // To use: import { renderSchedulePage } from './page'; then write the output to an .html file or serve it as needed.
 
+function ScheduleTable({ weeks }: { weeks: ScheduleRow[] }) {
+  return (
+    <table className="schedule-table w-full border-collapse mb-4">
+      <thead>
+        <tr>
+          <th className="bg-blue-100 text-slate-800">Week</th>
+          <th className="bg-blue-100 text-slate-800">Date</th>
+          <th className="bg-blue-100 text-slate-800">Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        {weeks.map((row, idx) => (
+          <tr key={idx} className={idx % 2 === 0 ? 'bg-slate-50' : 'bg-white'}>
+            <td>{row.week ?? ''}</td>
+            <td>{formatDate(row.date)}</td>
+            <td>{row.note}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+function ScheduleSection({ title, timing, semesters, color }: { title: string, timing: string, semesters: Semester[], color: string }) {
+  const sectionColor = color === 'blue' ? 'border-blue-500 bg-blue-50' : 'border-indigo-500 bg-indigo-50';
+  return (
+    <section className={`schedule-section mb-8 p-4 rounded-xl border-2 ${sectionColor}`}>
+      <div className="timing font-semibold mb-2">
+        {title}: <span>{timing}</span>
+      </div>
+      {semesters.map((sem) => (
+        <div className="semester mb-6" key={sem.name}>
+          <h3 className="text-lg font-bold text-blue-900 mb-2">{sem.name}</h3>
+          <ScheduleTable weeks={sem.weeks} />
+        </div>
+      ))}
+    </section>
+  );
+}
+
 export default function SchedulePage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-indigo-50">
-      <h1 className="text-2xl font-bold text-indigo-900 mb-4">Schedule Page</h1>
-      <p className="text-gray-700">The schedule is now available as a static HTML file.<br />
-        <a href="/schedule/schedule.html" className="text-blue-700 underline">View the full schedule here</a>.
-      </p>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 to-indigo-50 py-8">
+      <div className="container max-w-3xl mx-auto bg-white rounded-xl shadow-md p-8">
+        <h1 className="text-3xl font-bold text-indigo-900 mb-6 text-center">School Schedule</h1>
+        <ScheduleSection
+          title="Regular Classes"
+          timing="Sundays, 9:50 AM – 11:30 AM"
+          semesters={regularSemesters}
+          color="blue"
+        />
+        <ScheduleSection
+          title="HSCP Classes"
+          timing="Sundays, 8:30 AM – 1:00 PM"
+          semesters={hscpSemesters}
+          color="indigo"
+        />
+      </div>
     </div>
   );
 }
