@@ -15,6 +15,7 @@ export default function Header() {
           <li><Link href="/teachers">Teachers</Link></li>
           <li><Link href="/officers">Officers</Link></li>
           <li><Link href="/volunteers">Volunteers</Link></li>
+          <li><Link href="/verify-domain">Domain verification</Link></li>
         </ul>
       </nav>
     </header>
