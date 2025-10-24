@@ -65,3 +65,9 @@ Contributing
 - Keep changes focused and include a clear PR description.
 
 If you need pointers to specific components or to move legacy content into the Next app, check the quick links at the top of this README.
+
+Domain verification
+- Static verification file (served from public): `public/domain-verification.html`
+- Next.js route: `/verify-domain` (file: `app/verify-domain/page.tsx`)
+
+The verification page contains the official verification statement for the srtamilschool.org domain and is available as both a static file and an App Router route.
