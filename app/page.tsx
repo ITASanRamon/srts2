@@ -1,38 +1,11 @@
 
+import Header from "./components/Header";
 import Image from "next/image";
-
-const schedule = [
-  { week: 1, date: "2025-08-16", note: "Book Distribution" },
-  { week: 1, date: "2025-08-17", note: "First Day of School" },
-  { week: 2, date: "2025-08-24", note: "" },
-  { week: 3, date: "2025-08-31", note: "No School (Labor Day Holiday)" },
-  { week: 4, date: "2025-09-07", note: "Monthly Test" },
-  { week: 5, date: "2025-09-14", note: "" },
-  { week: 6, date: "2025-09-21", note: "" },
-  { week: 7, date: "2025-09-28", note: "" },
-  { week: 8, date: "2025-10-05", note: "Monthly Test" },
-  { week: 9, date: "2025-10-12", note: "" },
-  { week: 10, date: "2025-10-19", note: "" },
-];
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-indigo-50">
-      <header className="bg-gradient-to-r from-purple-900 to-blue-700 text-white py-8 px-4 text-center shadow-md">
-        <div className="flex flex-col items-center gap-2">
-          <Image src="/tamil_school_logo.svg" alt="San Ramon Tamil School Logo" width={80} height={80} className="rounded-lg shadow" />
-          <h1 className="text-3xl font-bold tracking-wide">San Ramon Tamil School</h1>
-        </div>
-        <nav className="mt-6">
-          <ul className="flex flex-wrap justify-center gap-6 text-lg font-medium">
-            <li><a href="#mission" className="hover:underline">Mission</a></li>
-            <li><a href="#our-school" className="hover:underline">Our School</a></li>
-            <li><a href="#school-registration" className="hover:underline">School Registration</a></li>
-            <li><a href="#hscp-registration" className="hover:underline">HSCP Registration</a></li>
-            <li><a href="#contact" className="hover:underline">Contact Us</a></li>
-          </ul>
-        </nav>
-      </header>
+      <Header />
 
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 py-10 space-y-12">
         <section id="mission">
@@ -82,29 +55,7 @@ export default function Home() {
           </p>
         </section>
 
-        <section id="schedule">
-          <h2 className="text-2xl font-semibold mb-2 text-blue-800">Schedule</h2>
-          <div className="overflow-x-auto">
-            <table className="min-w-full border border-gray-300 rounded-lg">
-              <thead className="bg-blue-100">
-                <tr>
-                  <th className="px-4 py-2 border">Week</th>
-                  <th className="px-4 py-2 border">Date</th>
-                  <th className="px-4 py-2 border">Note</th>
-                </tr>
-              </thead>
-              <tbody>
-                {schedule.map((row, idx) => (
-                  <tr key={idx} className="even:bg-gray-50">
-                    <td className="px-4 py-2 border text-center">{row.week}</td>
-                    <td className="px-4 py-2 border text-center">{row.date}</td>
-                    <td className="px-4 py-2 border">{row.note}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
+        {/* Schedule section moved to /schedule page */}
 
         <section id="contact">
           <h2 className="text-2xl font-semibold mb-2 text-blue-800">Contact Us</h2>

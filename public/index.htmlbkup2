@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>San Ramon Tamil School</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="San Ramon Tamil School Logo" style="height:50px;">
+    <h1>San Ramon Tamil School</h1>
+    <nav>
+      <ul>
+        <li><a href="#mission">Test</a></li>
+        <li><a href="#our-school">Our School</a></li>
+        <li><a href="#school-registration">School Registration</a></li>
+        <li><a href="#hscp-registration">HSCP Registration</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="mission">
+      <h2>Mission</h2>
+      <h3>
+        San Ramon Tamil School (SRTS) is dedicated to teaching the Tamil language and promoting Tamil culture to students of all ages and proficiency levels—from beginners to advanced learners. Our comprehensive program emphasizes fluency in reading, writing, and speaking Tamil, while also fostering a deep appreciation for Tamil literature, history, and traditions. Through interactive lessons and vibrant cultural events, We strive to create a supportive and inspiring environment where students can connect with their heritage and thrive.
+        </h3>
+    </section>
+    <section id="our-school">
+      <div>
+              <h2>Our School</h2>
+    <div class="school-features">
+      <!-- Card 1 -->
+      <div class="feature-card">
+        <img src="ITA_logo.png" alt="International Tamil Academy Logo">
+        <div class="highlight">
+          We are affiliated to International Tamil Academy (ITA) whose mission is to teach Tamil language to the Diaspora Children and Youth.
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="feature-card">
+        <img src="volunteer.png" alt="Volunteer Illustration">
+     <div class="highlight">
+          Our school is entirely run by dedicated volunteers. Parents generously contribute their time, talents, and energy to help our community thrive.
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="feature-card">
+        <img src="nonprofit.jpg" alt="Non-Profit Heart Graphic">
+      <div class="highlight">
+          SRTS is a Non-Profit Organization, registered in the state of California.
+        </div>
+      </div>
+    </div>
+  </div>
+    </section>
+
+    <section id="school-registration">
+      <h2>School Registration</h2>
+      <p>
+        <a href="https://www.catamilacademy.org/registration.html" class="button">Register for School</a>
+        <!-- Replace # with your registration link -->
+      </p>
+    </section>
+
+    <section id="hscp-registration">
+      <h2>HSCP Registration</h2>
+      <p>
+        <a href="https://catamilacademy.org/CreditProgram.html" class="button">Register for HSCP</a>
+        <!-- Replace # with your HSCP registration link -->
+      </p>
+    </section>
+
+    <section id="location-schedule">
+      <h2>Location & Schedule</h2>
+      <p>
+        <strong>Dougherty Valley High School</strong><br>
+        10550 Albion Road, San Ramon, CA 94582<br>
+        Classes are held every Sunday from 10:00 AM to 11:30 AM.
+      </p>
+    </section>
+<section id="schedule">
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Week</th>
+    <th>Date</th>
+    <th>Note</th>
+  </tr>
+  <tr><td>1</td><td>2025-08-16</td><td> Book Distribution</td></tr>
+  <tr><td>1</td><td>2025-08-17</td><td> First Day of School</td></tr>
+  <tr><td>2</td><td>2025-08-24</td><td></td></tr>
+  <tr><td>3</td><td>2025-08-31</td><td> No School (Labor Day Holiday)</td></tr>
+  <tr><td>4</td><td>2025-09-07</td><td>Monthly Test</td></tr>
+  <tr><td>5</td><td>2025-09-14</td><td></td></tr>
+  <tr><td>6</td><td>2025-09-21</td><td></td></tr>
+  <tr><td>7</td><td>2025-09-28</td><td></td></tr>
+  <tr><td>8</td><td>2025-10-05</td><td>Monthly Test</td></tr>
+  <tr><td>9</td><td>2025-10-12</td><td></td></tr>
+  <tr><td>10</td><td>2025-10-19</td><td></td></tr>
+
+</table>
+
+</section>
+    
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>
+        Email: <a href="mailto:info@sanramontamilschool.org">info@sanramontamilschool.org</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 San Ramon Tamil School. All rights reserved.</p>
+  </footer>
+</body>
+</html>
