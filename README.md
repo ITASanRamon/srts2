@@ -1,99 +1,67 @@
 # ITA San Ramon — srts2 (branch)
 
-This repository contains the `srts2` branch of the ITA San Ramon website, built with Next.js (App Router), TypeScript and Tailwind CSS. This README provides branch-specific context, setup steps, and useful tips for contributors working on this branch.
+This repository contains the `srts2` branch of the ITA San Ramon website. It is a Next.js (App Router) project using TypeScript and Tailwind CSS, with some legacy Express + static HTML assets retained for reference.
 
-## Project overview
+Quick links
+- App layout: [`RootLayout`](app/layout.tsx) — [app/layout.tsx](app/layout.tsx)
+- Home page: [`Home`](app/page.tsx) — [app/page.tsx](app/page.tsx)
+- Shared header: [`Header`](app/components/Header.tsx) — [app/components/Header.tsx](app/components/Header.tsx)
+- Schedule page: [`SchedulePage`](app/schedule/page.tsx) — [app/schedule/page.tsx](app/schedule/page.tsx)
+- Next.js config: [next.config.js](next.config.js) and [next.config.ts](next.config.ts)
+- TypeScript config: [tsconfig.json](tsconfig.json)
+- Tailwind config: [tailwind.config.js](tailwind.config.js)
+- PostCSS config: [postcss.config.mjs](postcss.config.mjs) and [postcss.config.js](postcss.config.js)
+- Package manifest: [package.json](package.json) and lockfile [pnpm-lock.yaml](pnpm-lock.yaml)
+- Custom Next server: [server.js](server.js)
+- Legacy Express app (reference): [app.js](app.js)
+- Static public assets: [public/](public/)
+- Legacy view template: [views/index.html](views/index.html)
 
+Project overview
 - Framework: Next.js (App Router)
-- Languages: TypeScript, JavaScript
-- Styling: Tailwind CSS (plus some legacy CSS in `public/css`)
+- Languages: TypeScript & JavaScript
+- Styling: Tailwind CSS for main UI; legacy CSS remains in `public/` for reference
 - Purpose: Public site for ITA San Ramon with pages for officers, schedule, teachers, and volunteers.
 
-## Repository structure (important locations)
+Repository layout (high level)
+- app/ — Next.js App Router routes, components and global layout
+  - [app/layout.tsx](app/layout.tsx) — Root layout and font setup
+  - [app/page.tsx](app/page.tsx) — Home page
+  - [app/components/Header.tsx](app/components/Header.tsx) — top navigation/header
+  - [app/schedule/page.tsx](app/schedule/page.tsx) — schedule UI (regular + HSCP)
+  - route pages: [app/officers/page.tsx](app/officers/page.tsx), [app/teachers/page.tsx](app/teachers/page.tsx), [app/volunteers/page.tsx](app/volunteers/page.tsx)
+- public/ — static assets (images, legacy CSS, backups)
+  - legacy styles: [public/css/styles.css](public/css/styles.css)
+- views/ — legacy HTML templates (e.g. [views/index.html](views/index.html))
+- root config files: [next.config.js](next.config.js), [tsconfig.json](tsconfig.json), [tailwind.config.js](tailwind.config.js)
+- server helpers: [server.js](server.js) (custom Next server) and [app.js](app.js) (legacy Express rendering `views/`)
 
-- `app/` — Next.js App Router source (routes, layouts, components). Key files:
-  - `app/layout.tsx` — application layout
-  - `app/page.tsx` — home page
-  - `app/components/Header.tsx` — shared header component
-  - `app/officers`, `app/schedule`, `app/teachers`, `app/volunteers` — route pages
-- `public/` — static assets (images, legacy CSS backups)
-- `views/` — legacy HTML templates (kept for reference)
-- `package.json` — scripts and dependencies
-- `next.config.js`, `next.config.ts`, `tsconfig.json`, `tailwind.config.js` — configuration files
+Development environment
+- Dev container base: Ubuntu 24.04.2 LTS (branch-specific dev container may be used)
+- Node: Recommend Node 18+ (see engine constraints in lockfile for specific packages)
+- Package manager: pnpm (preferred). npm/yarn also work.
 
-## Schedule
-
-### Regular Classes
-
-- Weekly classes for all standard levels.
-- Refer to `app/schedule/page.tsx` for the latest schedule and updates.
-- Typical timings: Sundays, 10:00 AM – 12:00 PM (see website for details).
-
-### HSCP Classes
-
-- High School Credit Program (HSCP) classes for eligible students.
-- Schedule: Sundays, 8:30 AM – 1:00 PM.
-- Details and updates are also managed in `app/schedule/page.tsx` or a dedicated HSCP section if available.
-
-## Prerequisites
-
-- Node.js 18+ (recommended)
-- pnpm (preferred) — if you use npm or yarn, commands below will note equivalents
-
-## Install & run (local development)
-
-1. Install dependencies
-
+Local setup
+1. Install dependencies:
    pnpm install
-
-   (or `npm install` / `yarn install`)
-
-2. Start development server
-
+2. Run development server:
    pnpm dev
-
-   (or `npm run dev` / `yarn dev`)
-
-3. Open the app at http://localhost:3000
-
-4. Build for production
-
+   - `dev` script runs the custom server: [server.js](server.js)
+3. Build for production:
    pnpm build
-
-5. Start production server (after build)
-
+4. Start production server (after build):
    pnpm start
 
-## Useful scripts
+Notes & tips
+- The app uses the Next App Router (app/). Prefer editing pages under [app/](app/) rather than legacy templates under [views/](views/).
+- The site header/navigation is centralized in [`Header`](app/components/Header.tsx) — updating links there updates all pages.
+- Schedule content and logic live in [app/schedule/page.tsx](app/schedule/page.tsx).
+- Tailwind CSS is configured in [tailwind.config.js](tailwind.config.js). PostCSS configs are in [postcss.config.mjs](postcss.config.mjs) and [postcss.config.js](postcss.config.js) (both present).
+- Legacy Express app `app.js` serves `views/` and static files from `public/` — useful for quick static hosting or migrating content.
 
-Check `package.json` for the exact script list, but common scripts include:
-
-- `dev` — run development server
-- `build` — build for production
-- `start` — run production server
-- `lint` — run linters (if configured)
-
-## Branch-specific notes
-
-- This README is tailored for the `srts2` branch. If the branch contains experimental changes or deployment differences, list them here.
-- There are some legacy assets and CSS under `public/` and `views/` kept for reference; prefer updated components in `app/` when working on UI.
-- Review `next.config.*` files for environment-specific configuration before deploying.
-
-## Contributing
-
-- Create a feature branch off the `srts2` branch.
-- Run linters and tests locally (if present) before submitting a PR.
+Contributing
+- Create a feature branch off `srts2`.
+- Run linters and tests locally (if configured) before submitting a PR.
 - Keep changes focused and include a clear PR description.
 
-## Deploy
-
-- Deployment likely uses Vercel or a similar platform. Confirm environment variables and build settings with repository maintainers.
-
-## License & Maintainers
-
-- Check repository root for a LICENSE file and `package.json` for author/maintainer info.
-- For branch ownership or deployment secrets, contact the repository maintainers.
-
----
-
-This file was updated to provide branch-specific context for contributors working on `srts2`. Update it as the branch evolves or when special setup steps are introduced.
+If you need pointers to specific components or to move legacy content into the Next app, check the quick links at the top of this README.
